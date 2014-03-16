@@ -1,0 +1,24 @@
+PB3
+---------- source file: test_ram.psm                                                               
+000        test_ram            :
+000 0000A                        LOAD   s0, 10
+001 00100                        LOAD   s1, 0
+           
+           ; wpisanie do kolejnych komorek wartosci 10, 12, 14...
+002        loop                :
+002 2F010                        STORE  s0, ( s1 )
+003 07210                        FETCH  s2, ( s1 )
+004 18202                        ADD    s2, 2
+005 01020                        LOAD   s0, s2
+           
+006 18101                        ADD    s1, 1
+007 14140                        COMP   s1, 64
+008 35402                        JUMP   nz, loop
+           
+           ; skopiowanie wartosci komorki 0 do komorki 10
+009 06200                        FETCH  s2, 0
+00A 2E20A                        STORE  s2, 10
+           
+00B        stop                :
+00B 3400B                        JUMP   stop
+           

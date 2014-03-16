@@ -1,0 +1,19 @@
+test_io:
+	load s0, 0
+
+; wypisanie na wyjsciach numerow wyjsc
+loop1:
+	out s0, s0
+	add s0, 1
+	jump nz, loop1
+
+; out2 = in0 + in1
+loop2:
+	in s0, 0
+	in s1, 1
+	
+	add s0, s1
+	out s0, 2
+	
+	jump loop2
+	

@@ -1,0 +1,18 @@
+test_int:
+	load s1, 0
+	out s1, 0
+	eint
+loop:
+	jump loop
+
+int_func:
+	in s8, 0
+	test s8, 0xf0
+	jump nz, int_func_end
+	addc s1, s8
+	out s1, 0
+int_func_end:
+	reti enable
+
+ORG	$3ff
+	jump int_func

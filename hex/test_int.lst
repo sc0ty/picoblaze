@@ -1,0 +1,20 @@
+PB3
+---------- source file: test_int.psm                                                               
+000        test_int            :
+000 00100                        LOAD   s1, 0
+001 2C100                        OUT    s1, 0
+002 3C001                        EINT  
+003        loop                :
+003 34003                        JUMP   loop
+           
+004        int_func            :
+004 04800                        IN     s8, 0
+005 128F0                        TEST   s8, 0xf0
+006 35409                        JUMP   nz, int_func_end
+007 1B180                        ADDC   s1, s8
+008 2C100                        OUT    s1, 0
+009        int_func_end        :
+009 38001                        RETI   enable
+           
+3FF                              ORG    0x3ff
+3FF 34004                        JUMP   int_func

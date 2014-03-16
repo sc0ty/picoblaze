@@ -1,0 +1,35 @@
+PB3
+---------- source file: test_loop.psm                                                              
+000        test_loop           :
+000 18001                        ADD    s0, 1
+001 2C000                        OUT    s0, 0
+002 30004                        CALL   loop1
+003 34000                        JUMP   test_loop
+           
+004        loop1               :
+004 18801                        ADD    s8, 1
+005 2C801                        OUT    s8, 1
+006 3000A                        CALL   loop2
+007 14800                        COMP   s8, 0
+008 35404                        JUMP   nz, loop1
+009 2A000                        RET   
+           
+00A        loop2               :
+00A 18901                        ADD    s9, 1
+00B 3000F                        CALL   loop3
+00C 14900                        COMP   s9, 0
+00D 3540A                        JUMP   nz, loop2
+00E 2A000                        RET   
+           
+00F        loop3               :
+00F 18A01                        ADD    sA, 1
+010 30014                        CALL   loop4
+011 14A00                        COMP   sA, 0
+012 3540F                        JUMP   nz, loop3
+013 2A000                        RET   
+           
+014        loop4               :
+014 18B01                        ADD    sB, 1
+015 14B00                        COMP   sB, 0
+016 35414                        JUMP   nz, loop4
+017 2A000                        RET   

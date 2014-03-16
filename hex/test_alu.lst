@@ -1,0 +1,33 @@
+PB3
+---------- source file: test_alu.psm                                                               
+000        test_alu            :
+000 04000                        IN     s0, 0
+001 04101                        IN     s1, 1
+           
+           ; out0 = in0 + in1
+002 01200                        LOAD   s2, s0
+003 19210                        ADD    s2, s1
+004 2C200                        OUT    s2, 0
+           
+           ; out1 = in0 - in1
+005 01200                        LOAD   s2, s0
+006 1D210                        SUB    s2, s1
+007 2C201                        OUT    s2, 1
+           
+           ; out2 = in0 or in1
+008 01200                        LOAD   s2, s0
+009 0D210                        OR     s2, s1
+00A 2C202                        OUT    s2, 2
+           
+           ; out3 = in0 and in1
+00B 01200                        LOAD   s2, s0
+00C 0B210                        AND    s2, s1
+00D 2C203                        OUT    s2, 3
+           
+           ; out4 = in0 xor in1
+00E 01200                        LOAD   s2, s0
+00F 0F210                        XOR    s2, s1
+010 2C204                        OUT    s2, 4
+           
+011 34000                        JUMP   test_alu
+           

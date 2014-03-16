@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxFrame" name="MainWindow">
+		<title>PicoBlaze Simulator</title>
+		<icon>img/icon.ico</icon>
+		<size>900,700</size>
+		<minsize>1000,500</minsize>
+		<id_arg>0</id_arg>
+		<handler function="OnClose" entry="EVT_CLOSE" />
+		<object class="wxAuiManager" variable="auiManager" member="yes">
+			<handler function="OnauiManagerPaneClose" entry="EVT_AUI_PANE_CLOSE" />
+			<object class="AuiManagerItem">
+				<object class="wxAuiToolBar" name="ID_AUITOOLBAR1" variable="toolbarSim" member="yes">
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarItem" name="ID_AUITOOLBARITEM1" variable="btnLoad" member="yes">
+							<bitmap>img/open.png</bitmap>
+							<shorthelp>Load program</shorthelp>
+							<handler function="OnMenuLoadSelected" entry="EVT_TOOL" />
+						</object>
+						<label>Load</label>
+					</object>
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarSeparator" />
+						<label>Item label</label>
+					</object>
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarItem" name="ID_BTNSTART" variable="btnStart" member="yes">
+							<bitmap>img/start.gif</bitmap>
+							<disabledbitmap>img/startn.gif</disabledbitmap>
+							<shorthelp>Start</shorthelp>
+							<handler function="OnbtnStartClick" entry="EVT_TOOL" />
+						</object>
+						<label>Start</label>
+					</object>
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarItem" name="ID_BTNSTOP" variable="btnStop" member="yes">
+							<bitmap>img/stop.gif</bitmap>
+							<disabledbitmap>img/stopn.gif</disabledbitmap>
+							<shorthelp>Stop</shorthelp>
+							<handler function="OnbtnStopClick" entry="EVT_TOOL" />
+						</object>
+						<label>Stop</label>
+					</object>
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarItem" name="ID_BTNSTEP" variable="btnStep" member="yes">
+							<bitmap>img/step.gif</bitmap>
+							<disabledbitmap>img/stepn.gif</disabledbitmap>
+							<shorthelp>Step</shorthelp>
+							<handler function="OnbtnStepClick" entry="EVT_TOOL" />
+						</object>
+						<label>Step</label>
+					</object>
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarSeparator" />
+						<label>Item label</label>
+					</object>
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarItem" name="ID_BTNRESET" variable="btnReset" member="yes">
+							<bitmap>img/reset.gif</bitmap>
+							<disabledbitmap>img/resetn.gif</disabledbitmap>
+							<shorthelp>Reset</shorthelp>
+							<handler function="OnbtnResetClick" entry="EVT_TOOL" />
+						</object>
+						<label>Reset</label>
+					</object>
+				</object>
+				<name>Main tools</name>
+				<standardpanetype>Toolbar</standardpanetype>
+				<caption>Pane caption</caption>
+				<captionvisible>0</captionvisible>
+				<minimizebutton>0</minimizebutton>
+				<maximizebutton>0</maximizebutton>
+				<pinbutton>0</pinbutton>
+				<layer>10</layer>
+				<dockfixed>0</dockfixed>
+				<dockabledirection></dockabledirection>
+				<resizable>0</resizable>
+				<gripper>Default</gripper>
+				<destroyonclose>0</destroyonclose>
+				<firstadd>0</firstadd>
+			</object>
+			<object class="AuiManagerItem">
+				<object class="wxGrid" name="ID_GRIDREG" variable="gridRegs" member="yes">
+					<cols>1</cols>
+					<rows>18</rows>
+					<labelcolwidth>32</labelcolwidth>
+					<defaultcolsize>64</defaultcolsize>
+					<collabels>
+						<item>Value</item>
+					</collabels>
+					<rowlabels>
+						<item>s0</item>
+						<item>s1</item>
+						<item>s2</item>
+						<item>s3</item>
+						<item>s4</item>
+						<item>s5</item>
+						<item>s6</item>
+						<item>s7</item>
+						<item>s8</item>
+						<item>s9</item>
+						<item>sA</item>
+						<item>sB</item>
+						<item>sC</item>
+						<item>sD</item>
+						<item>sE</item>
+						<item>sF</item>
+						<item>PC</item>
+						<item>SP</item>
+					</rowlabels>
+					<font>
+						<size>11</size>
+						<style>normal</style>
+						<weight>normal</weight>
+						<underlined>0</underlined>
+						<family>teletype</family>
+						<face>Courier 10 Pitch</face>
+					</font>
+					<minsize>110,200</minsize>
+					<handler function="OngridRegsCellChange" entry="EVT_CMD_GRID_CELL_CHANGE" />
+				</object>
+				<name>paneRegs</name>
+				<caption>Registers</caption>
+				<minimizebutton>0</minimizebutton>
+				<maximizebutton>0</maximizebutton>
+				<row>1</row>
+				<dockdirection>Left</dockdirection>
+				<dockfixed>0</dockfixed>
+				<dockabledirection></dockabledirection>
+				<destroyonclose>0</destroyonclose>
+				<firstadd>0</firstadd>
+			</object>
+			<object class="AuiManagerItem">
+				<object class="wxGrid" name="ID_GRIDRAM" variable="gridRam" member="yes">
+					<cols>4</cols>
+					<rows>16</rows>
+					<labelcolwidth>32</labelcolwidth>
+					<defaultcolsize>48</defaultcolsize>
+					<collabels>
+						<item>00</item>
+						<item>10</item>
+						<item>20</item>
+						<item>30</item>
+					</collabels>
+					<rowlabels>
+						<item>0</item>
+						<item>1</item>
+						<item>2</item>
+						<item>3</item>
+						<item>4</item>
+						<item>5</item>
+						<item>6</item>
+						<item>7</item>
+						<item>8</item>
+						<item>9</item>
+						<item>A</item>
+						<item>B</item>
+						<item>C</item>
+						<item>D</item>
+						<item>E</item>
+						<item>F</item>
+					</rowlabels>
+					<font>
+						<size>11</size>
+						<style>normal</style>
+						<weight>normal</weight>
+						<underlined>0</underlined>
+						<family>teletype</family>
+						<face>Courier 10 Pitch</face>
+					</font>
+					<minsize>238,200</minsize>
+					<handler function="OngridRamCellChange" entry="EVT_CMD_GRID_CELL_CHANGE" />
+				</object>
+				<name>paneRam</name>
+				<caption>RAM</caption>
+				<minimizebutton>0</minimizebutton>
+				<maximizebutton>0</maximizebutton>
+				<row>2</row>
+				<dockdirection>Left</dockdirection>
+				<dockfixed>0</dockfixed>
+				<dockabledirection></dockabledirection>
+				<destroyonclose>0</destroyonclose>
+				<firstadd>0</firstadd>
+			</object>
+			<object class="AuiManagerItem">
+				<object class="wxGrid" name="ID_GRIDSTACK" variable="gridStack" member="yes">
+					<cols>1</cols>
+					<rows>31</rows>
+					<labelcolwidth>32</labelcolwidth>
+					<defaultcolsize>64</defaultcolsize>
+					<collabels>
+						<item>Value</item>
+					</collabels>
+					<font>
+						<size>11</size>
+						<style>normal</style>
+						<weight>normal</weight>
+						<underlined>0</underlined>
+						<family>teletype</family>
+						<face>Courier 10 Pitch</face>
+					</font>
+					<minsize>110,200</minsize>
+					<handler function="OngridStackCellChange" entry="EVT_CMD_GRID_CELL_CHANGE" />
+				</object>
+				<name>paneStack</name>
+				<caption>Stack</caption>
+				<minimizebutton>0</minimizebutton>
+				<maximizebutton>0</maximizebutton>
+				<row>3</row>
+				<dockdirection>Left</dockdirection>
+				<dockfixed>0</dockfixed>
+				<dockabledirection></dockabledirection>
+				<destroyonclose>0</destroyonclose>
+				<firstadd>0</firstadd>
+			</object>
+			<object class="AuiManagerItem">
+				<object class="wxPanel" name="ID_PANELFLAGS" variable="panelFlags" member="yes">
+					<minsize>80,26</minsize>
+					<object class="wxFlexGridSizer" variable="FlexGridSizer1" member="no">
+						<object class="spacer">
+							<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+							<border>5</border>
+							<option>1</option>
+						</object>
+						<object class="sizeritem">
+							<object class="wxCheckBox" name="ID_CHECKBOX1" variable="checkCF" member="yes">
+								<label>Carry Flag</label>
+								<handler function="OncheckCFClick" entry="EVT_CHECKBOX" />
+							</object>
+							<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+							<border>5</border>
+							<option>1</option>
+						</object>
+						<object class="spacer">
+							<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+							<border>5</border>
+							<option>1</option>
+						</object>
+						<object class="sizeritem">
+							<object class="wxCheckBox" name="ID_CHECKBOX2" variable="checkZF" member="yes">
+								<label>Zero Flag</label>
+								<handler function="OncheckZFClick" entry="EVT_CHECKBOX" />
+							</object>
+							<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+							<border>5</border>
+							<option>1</option>
+						</object>
+						<object class="spacer">
+							<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+							<border>5</border>
+							<option>1</option>
+						</object>
+						<object class="sizeritem">
+							<object class="wxCheckBox" name="ID_CHECKBOX3" variable="checkIE" member="yes">
+								<label>Interrupt Enable</label>
+								<handler function="OncheckIEClick" entry="EVT_CHECKBOX" />
+							</object>
+							<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+							<border>5</border>
+							<option>1</option>
+						</object>
+					</object>
+				</object>
+				<name>paneFlags</name>
+				<caption>Flagi</caption>
+				<minimizebutton>0</minimizebutton>
+				<maximizebutton>0</maximizebutton>
+				<dockdirection>Bottom</dockdirection>
+				<dockfixed>0</dockfixed>
+				<dockabledirection></dockabledirection>
+				<destroyonclose>0</destroyonclose>
+				<firstadd>0</firstadd>
+			</object>
+			<object class="AuiManagerItem">
+				<object class="wxGrid" name="ID_GRID2" variable="gridOut" member="yes">
+					<cols>2</cols>
+					<rows>256</rows>
+					<readonly>1</readonly>
+					<labelcolwidth>32</labelcolwidth>
+					<defaultcolsize>64</defaultcolsize>
+					<collabels>
+						<item>Value</item>
+						<item>Devices</item>
+					</collabels>
+					<size>220,-1</size>
+					<minsize>120,200</minsize>
+				</object>
+				<name>paneOut</name>
+				<caption>Output</caption>
+				<minimizebutton>0</minimizebutton>
+				<maximizebutton>0</maximizebutton>
+				<dockdirection>Right</dockdirection>
+				<dockfixed>0</dockfixed>
+				<dockabledirection></dockabledirection>
+				<destroyonclose>0</destroyonclose>
+				<firstadd>0</firstadd>
+			</object>
+			<object class="AuiManagerItem">
+				<object class="wxGrid" name="ID_GRID1" variable="gridIn" member="yes">
+					<cols>2</cols>
+					<rows>256</rows>
+					<readonly>1</readonly>
+					<labelcolwidth>32</labelcolwidth>
+					<defaultcolsize>64</defaultcolsize>
+					<collabels>
+						<item>Value</item>
+						<item>Devices</item>
+					</collabels>
+					<size>220,-1</size>
+					<minsize>120,200</minsize>
+				</object>
+				<name>paneIn</name>
+				<caption>Inputs</caption>
+				<minimizebutton>0</minimizebutton>
+				<maximizebutton>0</maximizebutton>
+				<row>1</row>
+				<dockdirection>Right</dockdirection>
+				<dockfixed>0</dockfixed>
+				<dockabledirection></dockabledirection>
+				<destroyonclose>0</destroyonclose>
+				<firstadd>0</firstadd>
+			</object>
+			<object class="AuiManagerItem">
+				<object class="wxGrid" name="ID_GRIDPROGRAM" variable="gridProgram" member="yes">
+					<cols>2</cols>
+					<rows>1024</rows>
+					<labelcolwidth>30</labelcolwidth>
+					<defaultcolsize>80</defaultcolsize>
+					<collabels>
+						<item>Opcode</item>
+						<item>Instruction</item>
+					</collabels>
+					<font>
+						<size>11</size>
+						<style>normal</style>
+						<weight>normal</weight>
+						<underlined>0</underlined>
+						<family>teletype</family>
+						<face>Courier 10 Pitch</face>
+					</font>
+					<minsize>120,200</minsize>
+					<handler function="OngridProgramCellChange" entry="EVT_CMD_GRID_CELL_CHANGE" />
+				</object>
+				<name>paneProgram</name>
+				<caption>Program</caption>
+				<minimizebutton>0</minimizebutton>
+				<maximizebutton>0</maximizebutton>
+				<dockdirection>Center</dockdirection>
+				<dockfixed>0</dockfixed>
+				<dockabledirection></dockabledirection>
+				<destroyonclose>0</destroyonclose>
+				<firstadd>0</firstadd>
+			</object>
+			<object class="AuiManagerItem">
+				<object class="wxAuiToolBar" name="ID_AUITOOLBAR2" variable="toolbarComponents" member="yes">
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarItem" name="ID_AUITOOLBARITEM2" variable="btnLeds" member="yes">
+							<bitmap>img/leds.png</bitmap>
+							<shorthelp>LEDs</shorthelp>
+							<handler function="OnMenuDiodySelected" entry="EVT_TOOL" />
+						</object>
+						<label>Leds</label>
+					</object>
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarItem" name="ID_AUITOOLBARITEM3" variable="btnSwitches" member="yes">
+							<bitmap>img/switches.png</bitmap>
+							<shorthelp>Switches</shorthelp>
+							<handler function="OnMenuSwitchesSelected" entry="EVT_TOOL" />
+						</object>
+						<label>Switches</label>
+					</object>
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarItem" name="ID_AUITOOLBARITEM4" variable="btnKeyboard" member="yes">
+							<bitmap>img/keyboard.png</bitmap>
+							<shorthelp>Keyboard</shorthelp>
+							<handler function="OnbtnKeyboardClick" entry="EVT_TOOL" />
+						</object>
+						<label>Keyboard</label>
+					</object>
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarItem" name="ID_AUITOOLBARITEM5" variable="btnTerminal" member="yes">
+							<bitmap>img/terminal.png</bitmap>
+							<shorthelp>Terminal</shorthelp>
+							<handler function="OnbtnTerminalClick" entry="EVT_TOOL" />
+						</object>
+						<label>Terminal</label>
+					</object>
+					<object class="AuiToolBarItem">
+						<object class="wxAuiToolBarItem" name="ID_AUITOOLBARITEM6" variable="btnTimer" member="yes">
+							<bitmap>img/timer.png</bitmap>
+							<shorthelp>Timer</shorthelp>
+							<handler function="OnbtnTimerClick" entry="EVT_TOOL" />
+						</object>
+						<label>Timer</label>
+					</object>
+				</object>
+				<name>Devices</name>
+				<standardpanetype>Toolbar</standardpanetype>
+				<caption>Pane caption</caption>
+				<captionvisible>0</captionvisible>
+				<minimizebutton>0</minimizebutton>
+				<maximizebutton>0</maximizebutton>
+				<pinbutton>0</pinbutton>
+				<layer>10</layer>
+				<position>1</position>
+				<dockfixed>0</dockfixed>
+				<dockabledirection></dockabledirection>
+				<resizable>0</resizable>
+				<gripper>Default</gripper>
+				<destroyonclose>0</destroyonclose>
+				<firstadd>0</firstadd>
+			</object>
+		</object>
+		<object class="wxMenuBar" variable="menuBar" member="no">
+			<object class="wxMenu" variable="Menu1" member="yes">
+				<label>File</label>
+				<object class="wxMenuItem" name="idMenuLoad" variable="MenuLoad" member="yes">
+					<label>Open</label>
+					<bitmap>img/open.png</bitmap>
+					<handler function="OnMenuLoadSelected" entry="EVT_MENU" />
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="idMenuClearRegs" variable="MenuClearRegs" member="yes">
+					<label>Clear registers</label>
+					<bitmap>img/clear.png</bitmap>
+					<handler function="OnMenuClearRegsSelected" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="idMenuClearRam" variable="MenuClearRam" member="yes">
+					<label>Clear RAM</label>
+					<bitmap>img/clear.png</bitmap>
+					<handler function="OnMenuClearRamSelected" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="idMenuClearStack" variable="MenuClearStack" member="yes">
+					<label>Clear stack</label>
+					<bitmap>img/clear.png</bitmap>
+					<handler function="OnMenuClearStackSelected" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="idMenuClearFlags" variable="MenuClearFlags" member="yes">
+					<label>Clear flags</label>
+					<bitmap>img/clear.png</bitmap>
+					<handler function="OnMenuClearFlagsSelected" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="idMenuClearAll" variable="MenuClearAll" member="yes">
+					<label>Clear all</label>
+					<bitmap>img/clearall.png</bitmap>
+					<handler function="OnMenuClearAllSelected" entry="EVT_MENU" />
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="idMenuExit" variable="MenuExit" member="yes">
+					<label>Exit</label>
+					<bitmap>img/exit.png</bitmap>
+					<handler function="OnMenuExitSelected" entry="EVT_MENU" />
+				</object>
+			</object>
+			<object class="wxMenu" variable="Menu4" member="yes">
+				<label>View</label>
+				<object class="wxMenuItem" name="idMenuDec" variable="MenuDec" member="yes">
+					<label>Decimal values</label>
+					<handler function="OnMenuDecSelected" entry="EVT_MENU" />
+					<radio>1</radio>
+				</object>
+				<object class="wxMenuItem" name="idMenuHex" variable="MenuHex" member="yes">
+					<label>Hexadecimal values</label>
+					<handler function="OnMenuHexSelected" entry="EVT_MENU" />
+					<radio>1</radio>
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="idMenuProgram" variable="MenuProgram" member="yes">
+					<label>Program</label>
+					<checked>1</checked>
+					<handler function="OnMenuProgramSelected" entry="EVT_MENU" />
+					<checkable>1</checkable>
+				</object>
+				<object class="wxMenuItem" name="idMenuRegs" variable="MenuRegs" member="yes">
+					<label>Registers</label>
+					<checked>1</checked>
+					<handler function="OnMenuRegsSelected" entry="EVT_MENU" />
+					<checkable>1</checkable>
+				</object>
+				<object class="wxMenuItem" name="idMenuRam" variable="MenuRam" member="yes">
+					<label>RAM</label>
+					<checked>1</checked>
+					<handler function="OnMenuRamSelected" entry="EVT_MENU" />
+					<checkable>1</checkable>
+				</object>
+				<object class="wxMenuItem" name="idMenuStack" variable="MenuStack" member="yes">
+					<label>Stack</label>
+					<checked>1</checked>
+					<handler function="OnMenuStackSelected" entry="EVT_MENU" />
+					<checkable>1</checkable>
+				</object>
+				<object class="wxMenuItem" name="idMenuIn" variable="MenuIn" member="yes">
+					<label>Inputs</label>
+					<checked>1</checked>
+					<handler function="OnMenuInSelected" entry="EVT_MENU" />
+					<checkable>1</checkable>
+				</object>
+				<object class="wxMenuItem" name="idMenuOut" variable="MenuOut" member="yes">
+					<label>Outputs</label>
+					<checked>1</checked>
+					<handler function="OnMenuOutSelected" entry="EVT_MENU" />
+					<checkable>1</checkable>
+				</object>
+				<object class="wxMenuItem" name="idMenuFlags" variable="MenuFlags" member="yes">
+					<label>Flags</label>
+					<checked>1</checked>
+					<handler function="OnMenuFlagsSelected" entry="EVT_MENU" />
+					<checkable>1</checkable>
+				</object>
+				<object class="wxMenu" name="idMenuToolbars" variable="MenuItem2" member="yes">
+					<label>Toolbars</label>
+					<object class="wxMenuItem" name="idMenuToolbarSim" variable="MenuToolbarSim" member="yes">
+						<label>Simulation</label>
+						<checked>1</checked>
+						<handler function="OnMenuToolbarSimSelected" entry="EVT_MENU" />
+						<checkable>1</checkable>
+					</object>
+					<object class="wxMenuItem" name="idMenuToolbarComponents" variable="MenuToolbarComponents" member="yes">
+						<label>Devices</label>
+						<checked>1</checked>
+						<handler function="OnMenuToolbarComponentsSelected" entry="EVT_MENU" />
+						<checkable>1</checkable>
+					</object>
+				</object>
+			</object>
+			<object class="wxMenu" variable="Menu3" member="yes">
+				<label>Simulation</label>
+				<object class="wxMenuItem" name="idMenuStart" variable="MenuStart" member="yes">
+					<label>Start</label>
+					<bitmap>img/start.gif</bitmap>
+					<handler function="OnbtnStartClick" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="idMenuStop" variable="MenuStop" member="yes">
+					<label>Stop</label>
+					<bitmap>img/stop.gif</bitmap>
+					<handler function="OnbtnStopClick" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="idMenuKrok" variable="MenuStep" member="yes">
+					<label>Step</label>
+					<bitmap>img/step.gif</bitmap>
+					<handler function="OnbtnStepClick" entry="EVT_MENU" />
+				</object>
+				<object class="separator" />
+				<object class="wxMenuItem" name="idMenuReset" variable="MenuReset" member="yes">
+					<label>Reset</label>
+					<bitmap>img/reset.gif</bitmap>
+					<handler function="OnbtnResetClick" entry="EVT_MENU" />
+				</object>
+			</object>
+			<object class="wxMenu" variable="Menu2" member="no">
+				<label>Devices</label>
+				<object class="wxMenuItem" name="idMenuLeds" variable="MenuLeds" member="no">
+					<label>LEDs</label>
+					<bitmap>img/leds.png</bitmap>
+					<handler function="OnMenuDiodySelected" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="idMenuSwitches" variable="MenuSwitches" member="no">
+					<label>Switches</label>
+					<bitmap>img/switches.png</bitmap>
+					<handler function="OnMenuSwitchesSelected" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="idMenuKeyboard" variable="MenuKeyboard" member="yes">
+					<label>Keyboard</label>
+					<bitmap>img/keyboard.png</bitmap>
+					<handler function="OnbtnKeyboardClick" entry="EVT_MENU" />
+				</object>
+				<object class="wxMenuItem" name="idMenuTerminal" variable="MenuTerminal" member="yes">
+					<label>Terminal</label>
+					<bitmap>img/terminal.png</bitmap>
+				</object>
+				<object class="wxMenuItem" name="idMenuTimer" variable="MenuTimer" member="yes">
+					<label>Timer</label>
+					<bitmap>img/timer.png</bitmap>
+				</object>
+			</object>
+			<object class="wxMenu" variable="Menu5" member="yes">
+				<label>Help</label>
+				<object class="wxMenuItem" name="idMenuAbout" variable="MenuAbout" member="yes">
+					<label>About program</label>
+					<handler function="OnMenuAboutSelected" entry="EVT_MENU" />
+				</object>
+			</object>
+		</object>
+		<object class="wxStatusBar" name="ID_STATUSBAR1" variable="statusBar" member="yes">
+			<fields>2</fields>
+			<widths>120,-10</widths>
+			<styles>wxSB_NORMAL,wxSB_NORMAL</styles>
+		</object>
+		<object class="wxFileDialog" variable="dlgLoadHex" member="yes">
+			<message>Select file</message>
+			<wildcard>Program files|*.hex|All files|*.*</wildcard>
+			<style>wxFD_DEFAULT_STYLE|wxFD_OPEN</style>
+		</object>
+		<object class="wxTimer" name="ID_TIMER1" variable="timerMips" member="yes">
+			<handler function="OntimerMipsTrigger" entry="EVT_TIMER" />
+		</object>
+	</object>
+</wxsmith>

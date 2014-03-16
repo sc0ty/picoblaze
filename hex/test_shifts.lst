@@ -1,0 +1,38 @@
+PB3
+---------- source file: test_shifts.psm                                                            
+000        test_shifts         :
+000 04000                        IN     s0, 0
+           
+001 01100                        LOAD   s1, s0
+002 20106                        SL0    s1
+003 2C100                        OUT    s1, 0
+           
+004 01100                        LOAD   s1, s0
+005 20107                        SL1    s1
+006 2C101                        OUT    s1, 1
+           
+007 01100                        LOAD   s1, s0
+008 20104                        SLX    s1
+009 2C102                        OUT    s1, 2
+           
+00A 01100                        LOAD   s1, s0
+00B 20100                        SLA    s1
+00C 2C103                        OUT    s1, 3
+           
+00D 01100                        LOAD   s1, s0
+00E 2010E                        SR0    s1
+00F 2C104                        OUT    s1, 4
+           
+010 01100                        LOAD   s1, s0
+011 2010F                        SR1    s1
+012 2C105                        OUT    s1, 5
+           
+013 01100                        LOAD   s1, s0
+014 2010A                        SRX    s1
+015 2C106                        OUT    s1, 6
+           
+016 01100                        LOAD   s1, s0
+017 20108                        SRA    s1
+018 2C107                        OUT    s1, 7
+           
+019 34000                        JUMP   test_shifts

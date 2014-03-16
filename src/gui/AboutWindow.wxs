@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wxsmith>
+	<object class="wxFrame" name="AboutWindow">
+		<title>About program</title>
+		<centered>1</centered>
+		<id_arg>0</id_arg>
+		<style>wxSTAY_ON_TOP|wxFRAME_TOOL_WINDOW|wxFRAME_FLOAT_ON_PARENT</style>
+		<handler function="OnClose" entry="EVT_CLOSE" />
+		<object class="wxBoxSizer" variable="BoxSizer1" member="no">
+			<object class="sizeritem">
+				<object class="wxPanel" name="ID_PANEL1" variable="Panel1" member="yes">
+					<object class="wxFlexGridSizer" variable="FlexGridSizer1" member="no">
+						<cols>1</cols>
+						<object class="sizeritem">
+							<object class="wxFlexGridSizer" variable="FlexGridSizer2" member="no">
+								<cols>3</cols>
+								<object class="sizeritem">
+									<object class="wxStaticBitmap" name="ID_STATICBITMAP1" variable="txtLogo" member="yes">
+										<bitmap>img/logo.png</bitmap>
+										<size>160,160</size>
+										<style>0</style>
+									</object>
+									<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+									<border>20</border>
+									<option>1</option>
+								</object>
+								<object class="sizeritem">
+									<object class="wxStaticText" name="ID_STATICTEXT1" variable="txtInfo" member="yes">
+										<label>PicoBlaze Simulator&#x0A;&#x0A;Application developed during work on BSc thesis&#x0A;at Poznan University of Technology in 2013.&#x0A;Relesed under GNU GPL license.&#x0A;&#x0A;Author: Mike Szymaniak&#x0A;http://sc0ty.pl&#x0A;sc0typl@gmail.com</label>
+										<font>
+											<size>10</size>
+										</font>
+										<style>wxALIGN_CENTRE</style>
+									</object>
+									<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+									<border>20</border>
+									<option>1</option>
+								</object>
+							</object>
+							<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+							<border>5</border>
+							<option>1</option>
+						</object>
+						<object class="sizeritem">
+							<object class="wxButton" name="ID_BUTTON1" variable="btnOk" member="yes">
+								<label>OK</label>
+								<default>1</default>
+								<handler function="OnbtnOkClick" entry="EVT_BUTTON" />
+							</object>
+							<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+							<border>20</border>
+							<option>1</option>
+						</object>
+					</object>
+				</object>
+				<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
+				<option>1</option>
+			</object>
+		</object>
+	</object>
+</wxsmith>

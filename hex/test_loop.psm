@@ -1,0 +1,33 @@
+test_loop:
+	add s0, 1
+	out s0, 0
+	call loop1
+	jump test_loop
+	
+loop1:
+	add s8, 1
+	out s8, 1
+	call loop2
+	comp s8, 0
+	jump nz, loop1
+	ret
+	
+loop2:
+	add s9, 1
+	call loop3
+	comp s9, 0
+	jump nz, loop2
+	ret
+	
+loop3:
+	add sA, 1
+	call loop4
+	comp sA, 0
+	jump nz, loop3
+	ret
+	
+loop4:
+	add sB, 1
+	comp sB, 0
+	jump nz, loop4
+	ret

@@ -1,0 +1,22 @@
+test_ram:
+	load s0, 10
+	load s1, 0
+
+; wpisanie do kolejnych komorek wartosci 10, 12, 14...
+loop:
+	store s0, (s1)
+	fetch s2, (s1)
+	add s2, 2
+	load s0, s2
+	
+	add s1, 1
+	comp s1, 64
+	jump nz, loop
+
+; skopiowanie wartosci komorki 0 do komorki 10
+	fetch s2, 0
+	store s2, 10
+
+stop:
+	jump stop
+	

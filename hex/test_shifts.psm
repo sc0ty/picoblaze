@@ -1,0 +1,36 @@
+test_shifts:
+	in s0, 0
+
+	load s1, s0
+	sl0 s1
+	out s1, 0
+
+	load s1, s0
+	sl1 s1
+	out s1, 1
+
+	load s1, s0
+	slx s1
+	out s1, 2
+
+	load s1, s0
+	sla s1
+	out s1, 3
+
+	load s1, s0
+	sr0 s1
+	out s1, 4
+
+	load s1, s0
+	sr1 s1
+	out s1, 5
+
+	load s1, s0
+	srx s1
+	out s1, 6
+
+	load s1, s0
+	sra s1
+	out s1, 7
+	
+	jump test_shifts

@@ -1,0 +1,21 @@
+PB3
+---------- source file: test_io.psm                                                                
+000        test_io             :
+000 00000                        LOAD   s0, 0
+           
+           ; wypisanie na wyjsciach numerow wyjsc
+001        loop1               :
+001 2D000                        OUT    s0, s0
+002 18001                        ADD    s0, 1
+003 35401                        JUMP   nz, loop1
+           
+           ; out2 = in0 + in1
+004        loop2               :
+004 04000                        IN     s0, 0
+005 04101                        IN     s1, 1
+           
+006 19010                        ADD    s0, s1
+007 2C002                        OUT    s0, 2
+           
+008 34004                        JUMP   loop2
+           

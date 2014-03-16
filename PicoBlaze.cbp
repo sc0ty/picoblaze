@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="PicoBlaze" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/PicoBlaze" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="`wx-config --cflags`" />
+					<Add option="-Winvalid-pch" />
+					<Add option="-DWX_PRECOMP" />
+				</Compiler>
+				<Linker>
+					<Add option="`wx-config --libs`" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/PicoBlaze" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-fomit-frame-pointer" />
+					<Add option="-O3" />
+					<Add option="`wx-config --cflags`" />
+					<Add option="-Winvalid-pch" />
+					<Add option="-DWX_PRECOMP" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="`wx-config --libs`" />
+				</Linker>
+			</Target>
+			<Target title="DebugWin">
+				<Option output="bin/DebugWin/PicoBlaze" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/DebugWin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-pipe" />
+					<Add option="-mthreads" />
+					<Add option='[[if (PLATFORM == PLATFORM_MSW &amp;&amp; (GetCompilerFactory().GetCompilerVersionString(_T(&quot;gcc&quot;)) &gt;= _T(&quot;4.0.0&quot;))) print(_T(&quot;-Wno-attributes&quot;));]]' />
+					<Add option="-Winvalid-pch" />
+					<Add option="-DEBUG" />
+					<Add option="-D__GNUWIN32__" />
+					<Add option="-D__WXMSW__" />
+					<Add option="-DWXUSINGDLL" />
+					<Add option="-DwxUSE_UNICODE" />
+					<Add option="-DWX_PRECOMP" />
+					<Add directory="$(#wx)/include" />
+					<Add directory="$(#wx)/contrib/include" />
+					<Add directory="$(#wx)/lib/gcc_dll/mswu" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="$(#wx)/include" />
+					<Add directory="$(#wx)/lib/gcc_dll/mswu" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-mthreads" />
+					<Add library="libwxmsw28u_core.a" />
+					<Add library="libwxbase28u.a" />
+					<Add library="libwxpng.a" />
+					<Add library="libwxzlib.a" />
+					<Add library="libwxmsw28u_adv.a" />
+					<Add library="libwxmsw28u_aui.a" />
+					<Add directory="$(#wx)/lib/gcc_dll" />
+				</Linker>
+			</Target>
+			<Target title="ReleaseWin">
+				<Option output="bin/ReleaseWin/PicoBlaze" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/ReleaseWin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-fomit-frame-pointer" />
+					<Add option="-O3" />
+					<Add option="-Wall" />
+					<Add option="-pipe" />
+					<Add option="-mthreads" />
+					<Add option='[[if (PLATFORM == PLATFORM_MSW &amp;&amp; (GetCompilerFactory().GetCompilerVersionString(_T(&quot;gcc&quot;)) &gt;= _T(&quot;4.0.0&quot;))) print(_T(&quot;-Wno-attributes&quot;));]]' />
+					<Add option="-Winvalid-pch" />
+					<Add option="-D__GNUWIN32__" />
+					<Add option="-D__WXMSW__" />
+					<Add option="-DWXUSINGDLL" />
+					<Add option="-DwxUSE_UNICODE" />
+					<Add option="-DWX_PRECOMP" />
+					<Add directory="$(#wx)/include" />
+					<Add directory="$(#wx)/contrib/include" />
+					<Add directory="$(#wx)/lib/gcc_dll/mswu" />
+				</Compiler>
+				<ResourceCompiler>
+					<Add directory="$(#wx)/include" />
+					<Add directory="$(#wx)/lib/gcc_dll/mswu" />
+				</ResourceCompiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-mthreads" />
+					<Add library="libwxmsw28u_core.a" />
+					<Add library="libwxbase28u.a" />
+					<Add library="libwxpng.a" />
+					<Add library="libwxzlib.a" />
+					<Add library="libwxmsw28u_adv.a" />
+					<Add library="libwxmsw28u_aui.a" />
+					<Add directory="$(#wx)/lib/gcc_dll" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-include src/wx_pch.h" />
+		</Compiler>
+		<Unit filename="resource.rc">
+			<Option compilerVar="WINDRES" />
+			<Option target="DebugWin" />
+			<Option target="ReleaseWin" />
+		</Unit>
+		<Unit filename="src/cpu/cpu.cpp" />
+		<Unit filename="src/cpu/cpu.h" />
+		<Unit filename="src/cpu/disasm.cpp" />
+		<Unit filename="src/cpu/disasm.h" />
+		<Unit filename="src/cpu/fileloader.cpp" />
+		<Unit filename="src/cpu/fileloader.h" />
+		<Unit filename="src/cpu/internals/decoder.cpp" />
+		<Unit filename="src/cpu/internals/flags.cpp" />
+		<Unit filename="src/cpu/internals/flags.h" />
+		<Unit filename="src/cpu/internals/instruction.cpp" />
+		<Unit filename="src/cpu/internals/instruction.h" />
+		<Unit filename="src/cpu/internals/instructions.cpp" />
+		<Unit filename="src/cpu/internals/instructions.h" />
+		<Unit filename="src/cpu/internals/opcodes.h" />
+		<Unit filename="src/cpu/internals/stack.cpp" />
+		<Unit filename="src/cpu/internals/stack.h" />
+		<Unit filename="src/cpu/io/incontroller.cpp" />
+		<Unit filename="src/cpu/io/incontroller.h" />
+		<Unit filename="src/cpu/io/outcontroller.cpp" />
+		<Unit filename="src/cpu/io/outcontroller.h" />
+		<Unit filename="src/cpu/io/output.cpp" />
+		<Unit filename="src/cpu/io/output.h" />
+		<Unit filename="src/gui/CpuThread.cpp" />
+		<Unit filename="src/gui/CpuThread.h" />
+		<Unit filename="src/gui/MainWindow.cpp" />
+		<Unit filename="src/gui/MainWindow.h" />
+		<Unit filename="src/gui/MainWindow.wxs" />
+		<Unit filename="src/gui/MainWindowFunc.cpp" />
+		<Unit filename="src/gui/AboutWindow.cpp" />
+		<Unit filename="src/gui/AboutWindow.h" />
+		<Unit filename="src/gui/Start.cpp" />
+		<Unit filename="src/gui/Start.h" />
+		<Unit filename="src/gui/components/KeyboardWindow.cpp" />
+		<Unit filename="src/gui/components/KeyboardWindow.h" />
+		<Unit filename="src/gui/components/KeyboardWindow.wxs" />
+		<Unit filename="src/gui/components/LedsWindow.cpp" />
+		<Unit filename="src/gui/components/LedsWindow.h" />
+		<Unit filename="src/gui/components/LedsWindow.wxs" />
+		<Unit filename="src/gui/components/SwitchWindow.cpp" />
+		<Unit filename="src/gui/components/SwitchWindow.h" />
+		<Unit filename="src/gui/components/SwitchWindow.wxs" />
+		<Unit filename="src/gui/components/TermWindow.cpp" />
+		<Unit filename="src/gui/components/TermWindow.h" />
+		<Unit filename="src/gui/components/TermWindow.wxs" />
+		<Unit filename="src/gui/components/TimerWindow.cpp" />
+		<Unit filename="src/gui/components/TimerWindow.h" />
+		<Unit filename="src/gui/components/TimerWindow.wxs" />
+		<Unit filename="src/wx_pch.h">
+			<Option compile="1" />
+			<Option weight="0" />
+		</Unit>
+		<Unit filename="src/gui/AboutWindow.wxs" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<lib_finder disable_auto="1" />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="src/gui/Start.cpp" main="MainWindow" init_handlers="necessary" language="CPP" />
+				<resources>
+					<wxFrame wxs="src/gui/MainWindow.wxs" src="src/gui/MainWindow.cpp" hdr="src/gui/MainWindow.h" fwddecl="0" i18n="1" name="MainWindow" language="CPP" />
+					<wxFrame wxs="src/gui/components/LedsWindow.wxs" src="src/gui/components/LedsWindow.cpp" hdr="src/gui/components/LedsWindow.h" fwddecl="0" i18n="1" name="LedsWindow" language="CPP" />
+					<wxFrame wxs="src/gui/components/SwitchWindow.wxs" src="src/gui/components/SwitchWindow.cpp" hdr="src/gui/components/SwitchWindow.h" fwddecl="0" i18n="1" name="SwitchWindow" language="CPP" />
+					<wxFrame wxs="src/gui/components/KeyboardWindow.wxs" src="src/gui/components/KeyboardWindow.cpp" hdr="src/gui/components/KeyboardWindow.h" fwddecl="0" i18n="1" name="KeyboardWindow" language="CPP" />
+					<wxFrame wxs="src/gui/components/TimerWindow.wxs" src="src/gui/components/TimerWindow.cpp" hdr="src/gui/components/TimerWindow.h" fwddecl="0" i18n="1" name="TimerWindow" language="CPP" />
+					<wxFrame wxs="src/gui/components/TermWindow.wxs" src="src/gui/components/TermWindow.cpp" hdr="src/gui/components/TermWindow.h" fwddecl="0" i18n="1" name="TermWindow" language="CPP" />
+					<wxFrame wxs="src/gui/AboutWindow.wxs" src="src/gui/AboutWindow.cpp" hdr="src/gui/AboutWindow.h" fwddecl="0" i18n="1" name="AboutWindow" language="CPP" />
+				</resources>
+			</wxsmith>
+			<debugger />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
