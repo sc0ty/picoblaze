@@ -5,9 +5,9 @@
 		<Option title="PicoBlaze" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/PicoBlaze" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+			<Target title="Debug.wx-config">
+				<Option output="bin/Debug.wx-config/PicoBlaze" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug.wx-config/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
@@ -22,9 +22,9 @@
 					<Add option="`wx-config --libs core base adv aui`" />
 				</Linker>
 			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/PicoBlaze" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
+			<Target title="Release.wx-config">
+				<Option output="bin/Release.wx-config/PicoBlaze" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release.wx-config/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
@@ -40,9 +40,9 @@
 					<Add option="`wx-config --libs core base adv aui`" />
 				</Linker>
 			</Target>
-			<Target title="DebugWin">
-				<Option output="bin/DebugWin/PicoBlaze" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/DebugWin/" />
+			<Target title="Debug.variable">
+				<Option output="bin/Debug.variable/PicoBlaze" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug.variable/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
@@ -52,9 +52,6 @@
 					<Add option="$(#wx.cflags)" />
 					<Add option="-Winvalid-pch" />
 					<Add option="-DDEBUG" />
-					<Add option="-D__GNUWIN32__" />
-					<Add option="-D__WXMSW__" />
-					<Add option="-DWXUSINGDLL" />
 					<Add option="-DwxUSE_UNICODE" />
 					<Add option="-DWX_PRECOMP" />
 					<Add directory="$(#wx)/include" />
@@ -67,9 +64,9 @@
 					<Add option="$(#wx.lflags)" />
 				</Linker>
 			</Target>
-			<Target title="ReleaseWin">
-				<Option output="bin/ReleaseWin/PicoBlaze" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/ReleaseWin/" />
+			<Target title="Release.variable">
+				<Option output="bin/Release.variable/PicoBlaze" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release.variable/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
@@ -79,9 +76,6 @@
 					<Add option="-Wall" />
 					<Add option="$(#wx.cflags)" />
 					<Add option="-Winvalid-pch" />
-					<Add option="-D__GNUWIN32__" />
-					<Add option="-D__WXMSW__" />
-					<Add option="-DWXUSINGDLL" />
 					<Add option="-DwxUSE_UNICODE" />
 					<Add option="-DWX_PRECOMP" />
 					<Add directory="$(#wx)/include" />
@@ -102,8 +96,6 @@
 		</Compiler>
 		<Unit filename="resource.rc">
 			<Option compilerVar="WINDRES" />
-			<Option target="DebugWin" />
-			<Option target="ReleaseWin" />
 		</Unit>
 		<Unit filename="src/cpu/cpu.cpp" />
 		<Unit filename="src/cpu/cpu.h" />
