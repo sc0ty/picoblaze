@@ -192,13 +192,13 @@ SwitchWindow::~SwitchWindow()
 
 bool SwitchWindow::showPortSelectDialog()
 {
-    long res;
+    int res;
 
     res = wxGetNumberFromUser(_("Select port number"),
                               _("Port:"), _("Switches"), this->portNo,
                               0, Cpu::IO_PORTS_NO-1, this);
 
-    if ((res >= 0) && (res < (long)Cpu::IO_PORTS_NO))
+    if ((res >= 0) && (res < (int)Cpu::IO_PORTS_NO))
     {
         if (res != this->portNo)
         {

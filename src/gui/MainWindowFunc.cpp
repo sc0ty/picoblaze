@@ -275,7 +275,7 @@ void MainWindow::updateGridRegsCell(int row)
     {
         val = this->strToUint(gridRegs->GetCellValue(row, 0));
 
-        if ((row >= 0) && (row <= (int)Cpu::REGS_NO)) // s0 - sF
+        if ((row >= 0) && (row < (int)Cpu::REGS_NO)) // s0 - sF
             this->cpu.setRegister(row, (uint8_t)val);
 
         else if (row == 16) // PC

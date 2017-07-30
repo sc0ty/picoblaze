@@ -29,7 +29,7 @@ class CpuThread : public wxThread
 {
 public:
     CpuThread();
-    ~CpuThread();
+    virtual ~CpuThread();
 
     void setCpu(Cpu *cpu);
     int getCounter();
@@ -38,7 +38,6 @@ protected:
     virtual ExitCode Entry();
 
 protected:
-    bool running;
     Cpu *cpu;
     int counter;
     wxMutex counterMutex;

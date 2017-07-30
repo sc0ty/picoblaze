@@ -42,7 +42,7 @@ class MainWindow: public wxFrame
 {
 public:
     MainWindow(wxWindow* parent, wxWindowID id = -1);
-    ~MainWindow();
+    virtual ~MainWindow();
 
     void updateInInfo();
     void updateOutInfo();

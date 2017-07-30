@@ -21,7 +21,7 @@
 
 #include "CpuThread.h"
 
-CpuThread::CpuThread() : wxThread(wxTHREAD_DETACHED), running(false), cpu(NULL)
+CpuThread::CpuThread() : wxThread(wxTHREAD_DETACHED), cpu(NULL)
 {
     this->Create();
 }

@@ -529,6 +529,9 @@ MainWindow::MainWindow(wxWindow* parent,wxWindowID id)
 
 MainWindow::~MainWindow()
 {
+	this->stopCpu();
+	this->auiManager->UnInit();
+
     //(*Destroy(MainWindow)
     //*)
 }

@@ -3,10 +3,10 @@ OBJDIR=../obj
 EXECUTABLE=../picoblaze
 
 CXXFLAGS=-c -I.. -Wall -O3 -fomit-frame-pointer
-GUI_CXXFLAGS=$(CXXFLAGS) $(shell wx-config --cxxflags)
+GUI_CXXFLAGS=$(CXXFLAGS) $(shell wx-config --cxxflags core base adv aui)
 CORE_CXXFLAGS=$(CXXFLAGS)
 
-LDFLAGS=$(shell wx-config --libs)
+LDFLAGS=$(shell wx-config --libs core base adv aui)
 
 CORE_SOURCES=cpu/cpu.cpp \
 		cpu/disasm.cpp \

@@ -205,8 +205,8 @@ void Instruction::do_ROTATE_sX(Cpu &cpu)
 
 void Instruction::do_STORE_sX__ss(Cpu &cpu)
 {
-    unsigned int loc = getRegY(cpu) & 0x3f;
-    cpu.ram[loc] = getConst();
+    unsigned int loc = getConst();
+    cpu.ram[loc] = getRegX(cpu);
 }
 
 void Instruction::do_STORE_sX_sY(Cpu &cpu)
