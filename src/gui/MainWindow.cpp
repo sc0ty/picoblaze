@@ -409,13 +409,13 @@ MainWindow::MainWindow(wxWindow* parent,wxWindowID id)
     Connect(ID_BTNSTOP,wxEVT_COMMAND_TOOL_CLICKED,(wxObjectEventFunction)&MainWindow::OnbtnStopClick);
     Connect(ID_BTNSTEP,wxEVT_COMMAND_TOOL_CLICKED,(wxObjectEventFunction)&MainWindow::OnbtnStepClick);
     Connect(ID_BTNRESET,wxEVT_COMMAND_TOOL_CLICKED,(wxObjectEventFunction)&MainWindow::OnbtnResetClick);
-    Connect(ID_GRIDREG,wxEVT_GRID_CELL_CHANGE,(wxObjectEventFunction)&MainWindow::OngridRegsCellChange);
-    Connect(ID_GRIDRAM,wxEVT_GRID_CELL_CHANGE,(wxObjectEventFunction)&MainWindow::OngridRamCellChange);
-    Connect(ID_GRIDSTACK,wxEVT_GRID_CELL_CHANGE,(wxObjectEventFunction)&MainWindow::OngridStackCellChange);
+    Connect(ID_GRIDREG,wxEVT_GRID_CELL_CHANGED,(wxObjectEventFunction)&MainWindow::OngridRegsCellChange);
+    Connect(ID_GRIDRAM,wxEVT_GRID_CELL_CHANGED,(wxObjectEventFunction)&MainWindow::OngridRamCellChange);
+    Connect(ID_GRIDSTACK,wxEVT_GRID_CELL_CHANGED,(wxObjectEventFunction)&MainWindow::OngridStackCellChange);
     Connect(ID_CHECKBOX1,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MainWindow::OncheckCFClick);
     Connect(ID_CHECKBOX2,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MainWindow::OncheckZFClick);
     Connect(ID_CHECKBOX3,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&MainWindow::OncheckIEClick);
-    Connect(ID_GRIDPROGRAM,wxEVT_GRID_CELL_CHANGE,(wxObjectEventFunction)&MainWindow::OngridProgramCellChange);
+    Connect(ID_GRIDPROGRAM,wxEVT_GRID_CELL_CHANGED,(wxObjectEventFunction)&MainWindow::OngridProgramCellChange);
     Connect(ID_AUITOOLBARITEM2,wxEVT_COMMAND_TOOL_CLICKED,(wxObjectEventFunction)&MainWindow::OnMenuDiodySelected);
     Connect(ID_AUITOOLBARITEM3,wxEVT_COMMAND_TOOL_CLICKED,(wxObjectEventFunction)&MainWindow::OnMenuSwitchesSelected);
     Connect(ID_AUITOOLBARITEM4,wxEVT_COMMAND_TOOL_CLICKED,(wxObjectEventFunction)&MainWindow::OnbtnKeyboardClick);
@@ -495,7 +495,7 @@ MainWindow::MainWindow(wxWindow* parent,wxWindowID id)
     for (i=0; i<Cpu::INSTRUCTIONS_NO; ++i)
     {
         gridProgram->SetRowLabelValue(i, this->uintToStr(i, true));
-        gridProgram->SetCellAlignment(wxALIGN_LEFT, i, 1);
+        gridProgram->SetCellAlignment(i, 1, wxALIGN_LEFT, wxALIGN_CENTRE);
         gridProgram->SetReadOnly(i, 1);
     }
 
@@ -508,13 +508,13 @@ MainWindow::MainWindow(wxWindow* parent,wxWindowID id)
     {
         gridIn->SetRowLabelValue(i, this->uintToStr(i));
         gridIn->SetCellFont(i, 0, font);
-        gridIn->SetCellAlignment(wxALIGN_LEFT, i, 1);
+        gridIn->SetCellAlignment(i, 1, wxALIGN_LEFT, wxALIGN_CENTRE);
         gridIn->SetCellBackgroundColour(i, 0, color);
         gridIn->SetCellBackgroundColour(i, 1, color);
 
         gridOut->SetRowLabelValue(i, this->uintToStr(i));
         gridOut->SetCellFont(i, 0, font);
-        gridOut->SetCellAlignment(wxALIGN_LEFT, i, 1);
+        gridOut->SetCellAlignment(i, 1, wxALIGN_LEFT, wxALIGN_CENTRE);
         gridOut->SetCellBackgroundColour(i, 0, color);
         gridOut->SetCellBackgroundColour(i, 1, color);
     }

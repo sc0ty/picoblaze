@@ -68,7 +68,7 @@ TermWindow::TermWindow(MainWindow* parent, Cpu *cpu, wxWindowID id, const wxPoin
     BoxSizer1 = new wxBoxSizer(wxHORIZONTAL);
     Panel1 = new wxPanel(this, ID_PANEL1, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("ID_PANEL1"));
     FlexGridSizer1 = new wxFlexGridSizer(0, 1, 0, 0);
-    textTerm = new wxTextCtrl(Panel1, ID_TEXTCTRL1, wxEmptyString, wxDefaultPosition, wxSize(367,274), wxTE_AUTO_SCROLL|wxTE_MULTILINE|wxTE_READONLY, wxDefaultValidator, _T("ID_TEXTCTRL1"));
+    textTerm = new wxTextCtrl(Panel1, ID_TEXTCTRL1, wxEmptyString, wxDefaultPosition, wxSize(367,274), wxTE_MULTILINE|wxTE_READONLY, wxDefaultValidator, _T("ID_TEXTCTRL1"));
     wxFont textTermFont(10,wxTELETYPE,wxFONTSTYLE_NORMAL,wxNORMAL,false,_T("Monospace"),wxFONTENCODING_DEFAULT);
     textTerm->SetFont(textTermFont);
     FlexGridSizer1->Add(textTerm, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
