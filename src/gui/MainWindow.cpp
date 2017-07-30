@@ -21,7 +21,7 @@
 
 #include "../wx_pch.h"
 #include "MainWindow.h"
-#include "AboutWindow.h"
+#include "AboutDialog.h"
 #include "components/LedsWindow.h"
 #include "components/SwitchWindow.h"
 #include "components/KeyboardWindow.h"
@@ -787,7 +787,6 @@ void MainWindow::OnMenuExitSelected(wxCommandEvent& event)
 
 void MainWindow::OnMenuAboutSelected(wxCommandEvent& event)
 {
-    AboutWindow *aboutWindow = new AboutWindow(this);
-    aboutWindow->MakeModal();
-    aboutWindow->Show();
+    AboutDialog *aboutDialog = new AboutDialog(this);
+    aboutDialog->ShowModal();
 }

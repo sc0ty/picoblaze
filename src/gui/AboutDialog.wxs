@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <wxsmith>
-	<object class="wxFrame" name="AboutWindow">
+	<object class="wxFrame" name="AboutDialog">
 		<title>About program</title>
 		<centered>1</centered>
 		<id_arg>0</id_arg>
 		<style>wxSTAY_ON_TOP|wxFRAME_TOOL_WINDOW|wxFRAME_FLOAT_ON_PARENT</style>
-		<handler function="OnClose" entry="EVT_CLOSE" />
 		<object class="wxBoxSizer" variable="BoxSizer1" member="no">
 			<object class="sizeritem">
 				<object class="wxPanel" name="ID_PANEL1" variable="Panel1" member="yes">

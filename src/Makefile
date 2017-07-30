@@ -24,7 +24,7 @@ GUI_SOURCES=gui/Start.cpp \
 		gui/MainWindow.cpp \
 		gui/MainWindowFunc.cpp \
 		gui/CpuThread.cpp \
-		gui/AboutWindow.cpp \
+		gui/AboutDialog.cpp \
 		gui/components/KeyboardWindow.cpp \
 		gui/components/LedsWindow.cpp \
 		gui/components/SwitchWindow.cpp \
@@ -49,7 +49,7 @@ GUI_HEADERS=wx_pch.h \
 		gui/Start.h \
 		gui/MainWindow.h \
 		gui/CpuThread.h \
-		gui/AboutWindow.h \
+		gui/AboutDialog.h \
 		gui/components/KeyboardWindow.h \
 		gui/components/LedsWindow.h \
 		gui/components/SwitchWindow.h \

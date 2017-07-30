@@ -20,35 +20,35 @@
 */
 
 #include "src/wx_pch.h"
-#include "AboutWindow.h"
+#include "AboutDialog.h"
 
 #ifndef WX_PRECOMP
-	//(*InternalHeadersPCH(AboutWindow)
+	//(*InternalHeadersPCH(AboutDialog)
 	#include <wx/string.h>
 	#include <wx/intl.h>
 	//*)
 #endif
-//(*InternalHeaders(AboutWindow)
+//(*InternalHeaders(AboutDialog)
 #include <wx/font.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 //*)
 
-//(*IdInit(AboutWindow)
-const long AboutWindow::ID_STATICBITMAP1 = wxNewId();
-const long AboutWindow::ID_STATICTEXT1 = wxNewId();
-const long AboutWindow::ID_BUTTON1 = wxNewId();
-const long AboutWindow::ID_PANEL1 = wxNewId();
+//(*IdInit(AboutDialog)
+const long AboutDialog::ID_STATICBITMAP1 = wxNewId();
+const long AboutDialog::ID_STATICTEXT1 = wxNewId();
+const long AboutDialog::ID_BUTTON1 = wxNewId();
+const long AboutDialog::ID_PANEL1 = wxNewId();
 //*)
 
-BEGIN_EVENT_TABLE(AboutWindow,wxFrame)
-	//(*EventTable(AboutWindow)
+BEGIN_EVENT_TABLE(AboutDialog,wxDialog)
+	//(*EventTable(AboutDialog)
 	//*)
 END_EVENT_TABLE()
 
-AboutWindow::AboutWindow(wxWindow* parent,wxWindowID id)
+AboutDialog::AboutDialog(wxWindow* parent,wxWindowID id,const wxPoint& pos,const wxSize& size)
 {
-	//(*Initialize(AboutWindow)
+	//(*Initialize(AboutDialog)
 	wxFlexGridSizer* FlexGridSizer1;
 	wxFlexGridSizer* FlexGridSizer2;
 	wxBoxSizer* BoxSizer1;
@@ -61,7 +61,7 @@ AboutWindow::AboutWindow(wxWindow* parent,wxWindowID id)
 	txtLogo = new wxStaticBitmap(Panel1, ID_STATICBITMAP1, wxBitmap(wxImage(_T("img/logo.png")).Rescale(wxSize(160,160).GetWidth(),wxSize(160,160).GetHeight())), wxDefaultPosition, wxSize(160,160), 0, _T("ID_STATICBITMAP1"));
 	FlexGridSizer2->Add(txtLogo, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 20);
 	txtInfo = new wxStaticText(Panel1, ID_STATICTEXT1, _("PicoBlaze Simulator\n\nApplication developed during work on BSc thesis\nat Poznan University of Technology in 2013.\nRelesed under GNU GPL license.\n\nAuthor: Mike Szymaniak\nhttp://sc0ty.pl\nsc0typl@gmail.com"), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE, _T("ID_STATICTEXT1"));
-	wxFont txtInfoFont(10,wxDEFAULT,wxFONTSTYLE_NORMAL,wxNORMAL,false,wxEmptyString,wxFONTENCODING_DEFAULT);
+	wxFont txtInfoFont(10,wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_NORMAL,false,wxEmptyString,wxFONTENCODING_DEFAULT);
 	txtInfo->SetFont(txtInfoFont);
 	FlexGridSizer2->Add(txtInfo, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 20);
 	FlexGridSizer1->Add(FlexGridSizer2, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
@@ -77,25 +77,18 @@ AboutWindow::AboutWindow(wxWindow* parent,wxWindowID id)
 	BoxSizer1->SetSizeHints(this);
 	Center();
 
-	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&AboutWindow::OnbtnOkClick);
-	Connect(wxID_ANY,wxEVT_CLOSE_WINDOW,(wxObjectEventFunction)&AboutWindow::OnClose);
+	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&AboutDialog::OnbtnOkClick);
 	//*)
 }
 
-AboutWindow::~AboutWindow()
+AboutDialog::~AboutDialog()
 {
-	//(*Destroy(AboutWindow)
+	//(*Destroy(AboutDialog)
 	//*)
 }
 
 
-void AboutWindow::OnbtnOkClick(wxCommandEvent& event)
+void AboutDialog::OnbtnOkClick(wxCommandEvent& event)
 {
-    Close();
-}
-
-void AboutWindow::OnClose(wxCloseEvent& event)
-{
-    MakeModal(false);
-    event.Skip();
+	Close();
 }

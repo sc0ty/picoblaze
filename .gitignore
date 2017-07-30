@@ -1,2 +1,6 @@
 *.o
+*.layout
+*.depend
+/bin
+/obj
 /picoblaze
