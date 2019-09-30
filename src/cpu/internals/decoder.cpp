@@ -349,12 +349,13 @@ void Instruction::do_SL1_sX(Cpu &cpu)
 void Instruction::do_SLA_sX(Cpu &cpu)
 {
     uint8_t rx = getRegX(cpu);
-    cpu.flags.cf = rx & 0x80;
+    bool cf = rx & 0x80;
 
     rx <<= 1;
     rx |= cpu.flags.cf;
 
     setRegX(cpu, rx);
+    cpu.flags.cf = cf;
     cpu.flags.zf = (rx == 0);
 }
 
@@ -397,12 +398,13 @@ void Instruction::do_SR1_sX(Cpu &cpu)
 void Instruction::do_SRA_sX(Cpu &cpu)
 {
     uint8_t rx = getRegX(cpu);
-    cpu.flags.cf = rx & 1;
+    bool cf = rx & 1;
 
     rx >>= 1;
     rx |= (cpu.flags.cf << 7);
 
     setRegX(cpu, rx);
+    cpu.flags.cf = cf;
     cpu.flags.zf = (rx == 0);
 }
 
